@@ -14,10 +14,5 @@
     <ItemGroup>
         <ProjectReference Include="..\..\src\Soenneker.Extensions.Dictionaries.StringString\Soenneker.Extensions.Dictionaries.StringString.csproj" />
     </ItemGroup>
-
-    <ItemGroup>
-        <Content Include="testconfig.json">
-            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-        </Content>
-    </ItemGroup>
 </Project>
+
