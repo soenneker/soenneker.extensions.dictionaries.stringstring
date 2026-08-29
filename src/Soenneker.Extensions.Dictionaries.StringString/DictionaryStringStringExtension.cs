@@ -14,6 +14,7 @@ public static class DictionaryStringStringExtension
     /// Creates a new Dictionary&lt;string, object&gt; with the same entries as the source,
     /// pre‐sized to avoid rehashed buckets and without any LINQ overhead.
     /// </summary>
+    /// <returns>Creates a new Dictionary&lt;string, object&gt; with the same entries as the source, pre‐sized to avoid rehashed buckets and without any LINQ overhead.</returns>
     [Pure, MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static Dictionary<string, object> ToObjectDictionary(this IDictionary<string, string> source)
     {
