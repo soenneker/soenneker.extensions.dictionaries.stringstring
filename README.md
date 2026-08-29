@@ -4,7 +4,7 @@
 [![](https://img.shields.io/github/actions/workflow/status/soenneker/soenneker.extensions.dictionaries.stringstring/codeql.yml?label=CodeQL&style=for-the-badge)](https://github.com/soenneker/soenneker.extensions.dictionaries.stringstring/actions/workflows/codeql.yml)
 
 # ![](https://user-images.githubusercontent.com/4441470/224455560-91ed3ee7-f510-4041-a8d2-3fc093025112.png) Soenneker.Extensions.Dictionaries.StringString
-Converts an `IDictionary<string, string>` to a new `Dictionary<string, object>` without LINQ or unnecessary resizing.
+Extension methods for converting and transforming string-keyed, string-valued dictionaries while preserving important dictionary behavior such as key comparison.
 
 ## Installation
 
