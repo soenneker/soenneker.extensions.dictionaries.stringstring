@@ -4,7 +4,7 @@
 [![](https://img.shields.io/github/actions/workflow/status/soenneker/soenneker.extensions.dictionaries.stringstring/codeql.yml?label=CodeQL&style=for-the-badge)](https://github.com/soenneker/soenneker.extensions.dictionaries.stringstring/actions/workflows/codeql.yml)
 
 # ![](https://user-images.githubusercontent.com/4441470/224455560-91ed3ee7-f510-4041-a8d2-3fc093025112.png) Soenneker.Extensions.Dictionaries.StringString
-A collection of helpful Dictionary{string, string} extension methods.
+Converts an `IDictionary<string, string>` to a new `Dictionary<string, object>` without LINQ or unnecessary resizing.
 
 ## Installation
 
@@ -12,14 +12,18 @@ A collection of helpful Dictionary{string, string} extension methods.
 dotnet add package Soenneker.Extensions.Dictionaries.StringString
 ```
 
-## Quick start
+## Usage
 
 ```csharp
 using Soenneker.Extensions.Dictionaries.StringString;
+
+var source = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase)
+{
+    ["Region"] = "us-east"
+};
+
+Dictionary<string, object> values = source.ToObjectDictionary();
+object region = values["region"]; // "us-east"
 ```
 
-Import the namespace, then call the extension methods directly on the matching value.
-
-## Common operations
-
-- `ToObjectDictionary()` - Creates a new Dictionary<string, object> with the same entries as the source, pre‐sized to avoid rehashed buckets and without any LINQ overhead.
+The result is a separate dictionary; changing it does not change the source. When the source is a concrete `Dictionary<string, string>`, its key comparer is preserved, which is why the case-insensitive lookup above works. A null source throws `ArgumentNullException`.
