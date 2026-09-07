@@ -24,12 +24,17 @@ public static class DictionaryStringStringExtension
         // Reuse the source comparer when available (important if it's OrdinalIgnoreCase, etc.)
         IEqualityComparer<string>? comparer = (source as Dictionary<string, string>)?.Comparer;
 
-        // EnsureCapacity avoids rehashing even if caller passes a weird Count implementation
         var result = comparer is null
             ? new Dictionary<string, object>(source.Count)
             : new Dictionary<string, object>(source.Count, comparer);
 
-        result.EnsureCapacity(source.Count);
+        if (source is Dictionary<string, string> dictionary)
+        {
+            foreach (KeyValuePair<string, string> entry in dictionary)
+                result.Add(entry.Key, entry.Value);
+
+            return result;
+        }
 
         foreach (var kvp in source)
             result.Add(kvp.Key, kvp.Value); // no boxing; string is already a reference type
